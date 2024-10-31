@@ -40,6 +40,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .options button:hover {
@@ -67,6 +68,7 @@ body {
     border-width: 3px;
     border-color: #0be6b6;
     border-radius: 15px;
+    cursor: pointer;
 }
 
 button #next-button {
