@@ -1,22 +1,15 @@
-import { quiz_fatoumata_kebe } from "./script";
+import { quiz_fatoumata_kebe } from "./question.js";
 
-// Récupérer les emplacements pour afficher la question et les options
-const questionElement = document.querySelector("#question-text"); // Élément pour la question
-const optionsElement = document.querySelector("#options-container"); // Élément pour les options
-const nextButton = document.querySelector("#next-button"); // Bouton "Suivant"
+const questionElement = document.querySelector("#question-text");
+const optionsElement = document.querySelector("#options-container");
+const nextButton = document.querySelector("#next-button");
 
-let currentQuestionIndex = 0; // Index de la question actuelle
-let correctAnswersCount = 0; // Compteur pour les bonnes réponses
-let wrongAnswersCount = 0; // Compteur pour les mauvaises réponses
+let currentQuestionIndex = 0;
+let correctAnswersCount = 0;
+let wrongAnswersCount = 0;
 
 function loadQuestion() {
-  console.log(
-    "on charge la quetion " +
-      currentQuestionIndex +
-      "(currentQuestionIndex) avec laodQuestion() "
-  );
-  optionsElement.innerHTML = "";
-
+  optionsElement.innerText = "";
   const currentQuestion = quiz_fatoumata_kebe.questions[currentQuestionIndex];
   questionElement.innerText = currentQuestion.text;
   currentQuestion.options.forEach((optionsText) => {
@@ -25,3 +18,17 @@ function loadQuestion() {
     optionsElement.appendChild(optionButton);
   });
 }
+
+nextButton.addEventListener("click", () => {
+  currentQuestionIndex++;
+});
+
+if (currentQuestionIndex < quiz_fatoumata_kebe.questions.length) {
+  loadQuestion();
+} else {
+  questionElement.innerText = "fin";
+  optionsElement.innerHTML = "";
+  nextButton.style.display = "none";
+}
+
+loadQuestion();
