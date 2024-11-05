@@ -1,24 +1,27 @@
-import { quiz_fatoumata_kebe } from "./question.js";
+import { quiz_fatoumata_kebe } from "./script";
 
-const question = document.querySelector(".question");
-const options = document.querySelector(".options");
+// Récupérer les emplacements pour afficher la question et les options
+const questionElement = document.querySelector("#question-text"); // Élément pour la question
+const optionsElement = document.querySelector("#options-container"); // Élément pour les options
+const nextButton = document.querySelector("#next-button"); // Bouton "Suivant"
 
-console.log("question", quiz_fatoumata_kebe);
-console.log("1erequestion", quiz_fatoumata_kebe.questions[1]);
-/*appel de la première question question text bonne réponse*/
+let currentQuestionIndex = 0; // Index de la question actuelle
+let correctAnswersCount = 0; // Compteur pour les bonnes réponses
+let wrongAnswersCount = 0; // Compteur pour les mauvaises réponses
 
-const currentQuestion = quiz_fatoumata_kebe.questions[0];
-/*appel de la première question question text bonne réponse*/
+function loadQuestion() {
+  console.log(
+    "on charge la quetion " +
+      currentQuestionIndex +
+      "(currentQuestionIndex) avec laodQuestion() "
+  );
+  optionsElement.innerHTML = "";
 
-question.innerText = currentQuestion.text;
-/* récupère l'emplacement de question puis nous avons changé le texte de la question */
-
-currentQuestion.options.forEach((optionText) => {
-  const optionButton = document.createElement("button");
-  optionButton.innerText = optionText;
-
-  // optionButton.classList.add(optionText);
-  // BLOQUE CERTAINES QUESTIONS ET REPONSES
-
-  options.appendChild(optionButton);
-});
+  const currentQuestion = quiz_fatoumata_kebe.questions[currentQuestionIndex];
+  questionElement.innerText = currentQuestion.text;
+  currentQuestion.options.forEach((optionsText) => {
+    const optionButton = document.createElement("button");
+    optionButton.innerText = optionsText;
+    optionsElement.appendChild(optionButton);
+  });
+}
