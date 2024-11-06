@@ -8,7 +8,7 @@ export const quiz_fatoumata_kebe = {
         `Un langage de style utilisé pour personnaliser l'apparence des sites web.`,
         `Un langage de base de données utilisé pour stocker des informations.`,
       ],
-      correct_answer: `Un langage de balisage utilisé pour structurer le contenu d'une page web`,
+      correct_answer: `Un langage de balisage utilisé pour structurer le contenu d'une page web.`,
     },
     {
       text: `Quelle est la balise HTML pour insérer une image dans une page web ?`,
@@ -33,7 +33,7 @@ export const quiz_fatoumata_kebe = {
     {
       text: `Quelle méthode JavaScript peut être utilisée pour convertir une chaîne de caractères en nombre entier ?`,
       options: [`parseInt()`, `toString()`, `Number()`, `Math.round()`],
-      correct_answer: `La méthode parseInt() convertit une chaîne de caractères en un nombre entier.`,
+      correct_answer: `parseInt()`,
     },
     {
       text: `Quelle est la différence entre '==' et '===' en JavaScript ?`,
@@ -43,7 +43,7 @@ export const quiz_fatoumata_kebe = {
         `'==' est utilisé pour les nombres, '===' pour les chaînes`,
         `Il n'y a aucune différence`,
       ],
-      correct_answer: `'==' compare uniquement les valeurs en convertissant si nécessaire, tandis que '===' compare à la fois les valeurs et les types.`,
+      correct_answer: `'==' compare uniquement les valeurs, '===' compare les valeurs et les types`,
     },
     {
       text: `Qu'est-ce que CSS signifie ?`,
