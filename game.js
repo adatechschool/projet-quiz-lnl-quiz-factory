@@ -37,8 +37,12 @@ function checkAnswer(selectedOption, correctAnswer, optionButton) {
   // 2. ajouter l'attribut "disabled" aux boutons pour bloquer le clic
 
   if (selectedOption === correctAnswer) {
+    optionButton.style.border = "5px solid chartreuse";
+    optionButton.style.boxShadow = "5px 5px 8px chartreuse";
     correctAnswersCount++;
   } else {
+    optionButton.style.border = "5px solid #FF0800";
+    optionButton.style.boxShadow = "5px 5px 8px #FF0800";
     wrongAnswersCount++;
   }
 
