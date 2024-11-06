@@ -79,7 +79,7 @@ function showResults() {
   resultsBox.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
   resultsBox.innerHTML += `<br>`; // j'ajoute un ptit saut de ligne pour le style
   if (correctAnswersCount > 3) {
-    resultsBox.innerHTML += "Bravo, vous avez réussi !";
+    resultsBox.innerHTML += "Bravo !";
   } else {
     resultsBox.innerHTML += "Essaie encore !";
   }
