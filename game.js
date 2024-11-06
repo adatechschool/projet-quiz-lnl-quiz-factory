@@ -47,6 +47,7 @@ function checkAnswer(selectedOption, correctAnswer, optionButton) {
 
 function showResults() {
   questionElement.innerText = "Quiz terminé";
+  nextButton.style.display = "none";
 
   // au lieu de modifier directement optionsElement, vous pouvez créer un élément qui contiendra les résultats de votre quizz
   // optionsElement.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
