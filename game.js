@@ -18,14 +18,22 @@ function showQuestion() {
     optionButton.innerText = optionsText;
     optionsElement.appendChild(optionButton);
     optionButton.addEventListener("click", () => {
-      checkAnswer(optionsText, currentQuestion.correct_answer);
+      // En plus de donner à la fonction le texte de la réponse donnée, et de la bonne réponse, on lui donne aussi le bouton cliqué
+      checkAnswer(optionsText, currentQuestion.correct_answer, optionButton);
     });
     optionsElement.appendChild(optionButton);
   });
   nextButton.style.display = "none";
 }
 
-function checkAnswer(selectedOption, correctAnswer) {
+function checkAnswer(selectedOption, correctAnswer, optionButton) {
+  // En plus d'incrémenter les conteurs de bonne et mauvaise réponse, on ajoute une classe au bouton sélectionnée
+  optionButton.classList.add("selected-option");
+
+  // Attention - si jamais vous voulez bloquer les autres boutons, plusieurs options s'offrent à vous...
+  // 1. retirer les EventListener sur les autres boutons
+  // 2. ajouter l'attribut "disabled" aux boutons pour bloquer le clic
+
   if (selectedOption === correctAnswer) {
     correctAnswersCount++;
   } else {
@@ -36,13 +44,31 @@ function checkAnswer(selectedOption, correctAnswer) {
 }
 
 function showResults() {
-  questionElement.innerText = "quiz terminé";
-  optionsElement.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
+  questionElement.innerText = "Quiz terminé";
+
+  // au lieu de modifier directement optionsElement, vous pouvez créer un élément qui contiendra les résultats de votre quizz
+  // optionsElement.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
+  // if (correctAnswersCount > 2) {
+  //   optionsElement.innerHTML += "Bravo, vous avez réussi !";
+  // } else {
+  //   optionsElement.innerHTML += "Désolé, essayez encore";
+  // }
+
+  // on vide optionsElement, afin de pouvoir lui mettre des stats
+  optionsElement.innerHTML = "";
+  // on fait l'élément pour les résultats
+  const resultsBox = document.createElement("div");
+  resultsBox.classList.add("results-box"); // on lui met une classe pour pouvoir lui mettre un style CSS
+  // on lui fait la même chose que vous aviez fait dans le optionsElement
+  resultsBox.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
+  resultsBox.innerHTML += `<br>`; // j'ajoute un ptit saut de ligne pour le style
   if (correctAnswersCount > 2) {
-    optionsElement.innerHTML += "Bravo, vous avez réussi !";
+    resultsBox.innerHTML += "Bravo, vous avez réussi !";
   } else {
-    optionsElement.innerHTML += "Désolé, essayez encore";
+    resultsBox.innerHTML += "Désolé, essayez encore";
   }
+  // puis on l'ajoute à optionsElement
+  optionsElement.appendChild(resultsBox);
 
   const restartButton = document.createElement("button");
   restartButton.innerText = "Recommencer le quiz";
