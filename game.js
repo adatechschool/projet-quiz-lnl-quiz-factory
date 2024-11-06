@@ -29,6 +29,8 @@ function showQuestion() {
 function checkAnswer(selectedOption, correctAnswer, optionButton) {
   // En plus d'incrémenter les conteurs de bonne et mauvaise réponse, on ajoute une classe au bouton sélectionnée
   optionButton.classList.add("selected-option");
+  const optionsButton = optionsElement.querySelectorAll("button");
+  optionsButton.forEach((button) => (button.disabled = true));
 
   // Attention - si jamais vous voulez bloquer les autres boutons, plusieurs options s'offrent à vous...
   // 1. retirer les EventListener sur les autres boutons
