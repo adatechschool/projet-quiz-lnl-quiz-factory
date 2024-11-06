@@ -72,6 +72,13 @@ body {
   box-shadow: 5px 5px 5px #c6cbb0;
 }
 
+.options button:disabled:not(.selected-option) {
+  background-color: #1060a1ad;
+  color: rgb(141, 141, 141);
+  border: none;
+  transform: none;
+}
+
 .results-box {
   background-color: white;
   font-family: "Times New Roman", Times, serif;
