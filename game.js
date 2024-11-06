@@ -46,7 +46,7 @@ function checkAnswer(selectedOption, correctAnswer, optionButton) {
 }
 
 function showResults() {
-  questionElement.innerText = "Quiz terminé";
+  questionElement.innerText = "Fin du Quiz !";
   nextButton.style.display = "none";
 
   // au lieu de modifier directement optionsElement, vous pouvez créer un élément qui contiendra les résultats de votre quizz
@@ -65,16 +65,16 @@ function showResults() {
   // on lui fait la même chose que vous aviez fait dans le optionsElement
   resultsBox.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
   resultsBox.innerHTML += `<br>`; // j'ajoute un ptit saut de ligne pour le style
-  if (correctAnswersCount > 2) {
+  if (correctAnswersCount > 3) {
     resultsBox.innerHTML += "Bravo, vous avez réussi !";
   } else {
-    resultsBox.innerHTML += "Désolé, essayez encore";
+    resultsBox.innerHTML += "Essaie encore !";
   }
   // puis on l'ajoute à optionsElement
   optionsElement.appendChild(resultsBox);
 
   const restartButton = document.createElement("button");
-  restartButton.innerText = "Recommencer le quiz";
+  restartButton.innerText = "Recommencer le Quiz";
   restartButton.addEventListener("click", () => {
     currentQuestionIndex = 0;
     correctAnswersCount = 0;
