@@ -48,7 +48,16 @@ function checkAnswer(selectedOption, correctAnswer, optionButton) {
 function showResults() {
   questionElement.innerText = "Fin du Quiz !";
   nextButton.style.display = "none";
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min * 26;
+  }
 
+  confetti({
+    angle: randomInRange(55, 125),
+    spread: randomInRange(50, 70),
+    particleCount: randomInRange(50, 100),
+    origin: { y: 0.6 },
+  });
   // au lieu de modifier directement optionsElement, vous pouvez créer un élément qui contiendra les résultats de votre quizz
   // optionsElement.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
   // if (correctAnswersCount > 2) {
