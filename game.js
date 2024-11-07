@@ -32,10 +32,6 @@ function checkAnswer(selectedOption, correctAnswer, optionButton) {
   const optionsButton = optionsElement.querySelectorAll("button");
   optionsButton.forEach((button) => (button.disabled = true));
 
-  // Attention - si jamais vous voulez bloquer les autres boutons, plusieurs options s'offrent à vous...
-  // 1. retirer les EventListener sur les autres boutons
-  // 2. ajouter l'attribut "disabled" aux boutons pour bloquer le clic
-
   if (selectedOption === correctAnswer) {
     optionButton.style.border = "5px solid chartreuse";
     optionButton.style.boxShadow = "5px 5px 8px chartreuse";
@@ -62,13 +58,6 @@ function showResults() {
     particleCount: randomInRange(50, 100),
     origin: { y: 0.6 },
   });
-  // au lieu de modifier directement optionsElement, vous pouvez créer un élément qui contiendra les résultats de votre quizz
-  // optionsElement.innerHTML = `Vous avez obtenu ${correctAnswersCount} bonnes réponses et ${wrongAnswersCount} mauvaises réponses.`;
-  // if (correctAnswersCount > 2) {
-  //   optionsElement.innerHTML += "Bravo, vous avez réussi !";
-  // } else {
-  //   optionsElement.innerHTML += "Désolé, essayez encore";
-  // }
 
   // on vide optionsElement, afin de pouvoir lui mettre des stats
   optionsElement.innerHTML = "";
