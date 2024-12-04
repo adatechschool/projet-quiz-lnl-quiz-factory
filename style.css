@@ -1,146 +1,247 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 body {
-  margin: 0;
-  /* on retire la marge du body à 8px par défaut */
   height: 100vh;
-  background: url("image/electric.jpg");
+  background-color: black;
+  color: #898989;
 }
 
-#container-quiz {
-  height: 100%;
+nav {
+  padding: 0 10px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  border-bottom: 1px solid red;
 }
 
-.question {
-  font-family: roboto mono;
-  display: block;
-  max-width: 80%;
-  color: white;
-  text-align: center;
-  font-size: 25px;
-  font-weight: 600;
-  margin: 0px auto 75px auto;
-  background-color: #0be6b760;
-  padding: 15px;
-  border-radius: 15px;
-  box-shadow: 2px 6px 8px#0be6b6;
+nav .logo img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
 }
 
-.options {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
+nav .search {
+  display: flex;
+  gap: 10px;
 }
 
-.options button {
-  background-color: #0b87e69c;
-  color: white;
-  font-family: roboto mono;
-  text-align: center;
-  display: block;
-  width: 100%;
-  max-width: 800px;
-  padding: 15px;
-  font-size: 15px;
-  border-color: #0be6b6;
-  border-width: 3px;
-  border-radius: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 25px;
+nav a,
+nav .search input,
+nav .search button,
+nav .toggleTheme {
+  padding: 5px 15px;
+  font-size: 0.9em;
+  outline: none;
+  border: 1px solid#898989;
+  border-radius: 0.3em;
+  color: #898989;
+  background-color: #121218;
+  text-decoration: none;
+  box-shadow: 0px 6px 15px rgba(0, 255, 230, 0.3);
   cursor: pointer;
-  transition: background-color 0.5s, transform 0.5s;
 }
 
-.options button:hover {
-  background-color: #0be6b7;
-  box-shadow: 5px 5px 8px #0be6b6;
-  color: black;
+nav .toggleTheme:hover {
+  background-color: blue;
+  box-shadow: 5px 5px 8px red;
+  color: white;
   /* font-size: 16px; */
   transform: scale(1.05);
 }
 
-.options button:active {
+nav .toggleTheme:active {
   transform: scale(0.95);
 }
 
-.options button.selected-option {
-  background-color: #0be6be9c;
-  box-shadow: 5px 5px 5px #c6cbb0;
-}
-
-.options button:disabled:not(.selected-option) {
-  background-color: #1060a1ad;
-  color: rgb(141, 141, 141);
-  border: none;
-  transform: none;
-}
-
-.results-box {
-  background-color: #0b87e69c;
+a:hover {
+  background-color: blue;
+  box-shadow: 5px 5px 8px red;
   color: white;
-  font-family: roboto Mono;
-  text-align: center;
-  display: block;
-  width: 800px;
-  max-width: 100%;
-  border: 3px solid #0be6b6;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 5%;
-  max-width: 100%;
+  /* font-size: 16px; */
+  transform: scale(1.05);
+}
+a:active {
+  transform: scale(0.95);
 }
 
-.container-button {
-  text-align: end;
-  margin-left: 500px;
-  height: 100px;
-  /* hauteur définie pour qu'il compte dans le centrage du flex */
+img {
+  height: 90%;
+  width: 90%;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-.container-button button {
-  font-family: roboto mono;
+.input-start-date,
+.input-end-date {
+  background-color: #121218;
+  color: #d0d0d0;
+  border: 2px solid #080bbc; /* Bordure lumineuse subtile */
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: "Anta", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  outline: none;
+  transition: all 0.3s ease; /* Transition pour les interactions */
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1); /* Ombre interne subtile */
+}
+
+.input-start-date:focus,
+.input-end-date:focus {
+  border-color: red;
+  box-shadow: 0 0 15px rgba(3, 50, 152, 0.8);
+  color: #898989;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column; /* Les enfants s'aligneront verticalement */
+  align-items: center;
+  gap: 20px; /* Espacement entre les éléments */
+  max-width: 200px; /* Limiter la largeur */
+  margin-top: 20px;
+  margin-left: 25px;
+  border: solid black 2px;
+  border-radius: 4px;
+  padding: 10px 0px 10px 0px;
+}
+
+.button-display-range {
+  background: black; /* Dégradé discret sombre */
+  color: red;
+  border: 2px solid blue; /* Bordure lumineuse subtile */
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-family: "Anta", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.2px; /* Espacement des lettres.*/
+  text-transform: uppercase; /* Texte en majuscules */
+  cursor: pointer;
+  transition: all 0.3s ease-out; /* Transitions */
+  box-shadow: 0 4px 15px rgba(0, 255, 230, 0.1),
+    inset 0 0 5px rgba(255, 255, 255, 0.05); /* Ombres internes et externes */
+}
+
+.button-display-range:hover,
+nav a,
+nav .search input,
+nav .search button,
+nav .toggleTheme {
+  box-shadow: 0 6px 20px;
+}
+
+.button-display-range:active {
+  transform: translateY(2px);
+}
+
+.container {
   width: 100%;
-  max-width: 125px;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.info-box {
+  position: absolute;
+  bottom: 1px;
+  left: 10px;
+  background: rgba(16, 16, 16, 0.4);
+  padding: 8px;
+  border-radius: 10px;
+  max-width: 400px;
+  color: white;
+}
+.info-box h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+.info-box h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: lightblue;
+}
+.info-box p {
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.4;
+}
+.info-box a {
+  color: lightblue;
+  text-decoration: none;
+}
+.nav-button {
+  position: absolute;
+  top: 180px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 30px;
+  color: white;
+  z-index: 10;
+}
+.nav-button.left {
+  left: 20px;
+}
+.nav-button.right {
+  right: 20px;
+}
+
+.display-container p,
+h3 {
+  color: grey;
+  margin-top: 20px;
+}
+
+h1 {
+  color: blue;
+}
+
+h2 {
+  color: red;
+}
+
+.random-container,
+.apod-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 35px;
-  padding: 14px;
-  font-size: 15px;
-  color: rgb(255, 255, 255);
-  background-color: #0be6b760;
-  border-width: 3px;
-  border-color: #0be6b6;
-  border-radius: 15px;
-  cursor: pointer;
+  margin-top: 25px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: justify;
+  padding: 16px;
 }
 
-button #next-button {
-  .button font-family roboto mono {
-    width: 100%;
-    max-width: 125px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 35px;
-    padding: 14px;
-    font-size: 15px;
-    color: rgb(255, 255, 255);
-    background-color: #0be6b760;
-    border-width: 3px;
-    border-color: #0be6b6;
-    border-radius: 15px;
-  }
-}
+.display-container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 
-button#next-button:hover {
-  background-color: #0be6b760;
-  box-shadow: 2px 6px 8px#0be6b6;
-  color: white;
-}
+  padding-left: 20px;
+  padding-right: 20px;
 
-button#next-button:active {
-  box-shadow: 5px 5px 8px #c6cbb0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: justify;
+  padding: 16px;
 }
